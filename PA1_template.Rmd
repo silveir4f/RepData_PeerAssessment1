@@ -33,8 +33,6 @@ activity$interval <- as.factor(activity$interval)
 activity$week <- as.factor(ifelse(weekdays(activity$date) %in% c("Saturday","Sunday"), 'Weekend', 'Weekday'))
 
 activity_NAomit <- na.omit(activity)
-activity_NAomit_perDay <- ddply(activity_NAomit,.(date),summarise,steps=round(sum(steps),0))
-activity_NAomit_perInterval <- ddply(activity_NAomit,.(interval),summarise,steps=round(mean(steps),2))
 ```
 
 
@@ -42,6 +40,7 @@ activity_NAomit_perInterval <- ddply(activity_NAomit,.(interval),summarise,steps
 
 #### 1) The total number of steps per day (ignoring NAs) is:
 ```{r}
+activity_NAomit_perDay <- ddply(activity_NAomit,.(date),summarise,steps=round(sum(steps),0))
 activity_NAomit_perDay
 ```
 
@@ -66,6 +65,7 @@ median(activity_NAomit_perDay$steps)
 #### 1) Time series plot of the average of steps per interval across all days.
 
 ```{r}
+activity_NAomit_perInterval <- ddply(activity_NAomit,.(interval),summarise,steps=round(mean(steps),2))
 plot(as.numeric(activity_NAomit_perInterval$interval),activity_NAomit_perInterval$steps, type="l")
 ```
 
