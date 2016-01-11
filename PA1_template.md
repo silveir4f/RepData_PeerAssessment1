@@ -135,7 +135,7 @@ activity_NAomit_perDay
 #### 2) Histogram of the total number of steps taken each day (ignoring NAs):
 
 ```r
-hist(activity_NAomit_perDay$steps, breaks=15)
+hist(activity_NAomit_perDay$steps, breaks=15, xlab="Number of Steps Per Day",ylab="Frequency", main="Histogram")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
@@ -167,7 +167,7 @@ median(activity_NAomit_perDay$steps)
 
 ```r
 activity_NAomit_perInterval <- ddply(activity_NAomit,.(interval),summarise,steps=round(mean(steps),2))
-plot(as.numeric(activity_NAomit_perInterval$interval),activity_NAomit_perInterval$steps, type="l")
+plot(as.numeric(activity_NAomit_perInterval$interval),activity_NAomit_perInterval$steps, type="l", xaxt="n", xlab="Interval",ylab="Average Steps Per Interval", main="Time Series Plot Of The Average Steps Per Interval")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
@@ -262,7 +262,7 @@ activity_new_perInterval <- ddply(activity_new,.(interval),summarise,steps=round
 
 
 ```r
-hist(activity_new_perDay$steps, breaks=15)
+hist(activity_new_perDay$steps, breaks=15, , xlab="Number of Steps Per Day (Average)",ylab="Frequency", main="Histogram")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-11-1.png) 

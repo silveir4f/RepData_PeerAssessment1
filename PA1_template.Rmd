@@ -47,7 +47,7 @@ activity_NAomit_perDay
 
 #### 2) Histogram of the total number of steps taken each day (ignoring NAs):
 ```{r}
-hist(activity_NAomit_perDay$steps, breaks=15)
+hist(activity_NAomit_perDay$steps, breaks=15, xlab="Number of Steps Per Day",ylab="Frequency", main="Histogram")
 ```
 
 
@@ -66,7 +66,7 @@ median(activity_NAomit_perDay$steps)
 
 ```{r}
 activity_NAomit_perInterval <- ddply(activity_NAomit,.(interval),summarise,steps=round(mean(steps),2))
-plot(as.numeric(activity_NAomit_perInterval$interval),activity_NAomit_perInterval$steps, type="l")
+plot(as.numeric(activity_NAomit_perInterval$interval),activity_NAomit_perInterval$steps, type="l", xaxt="n", xlab="Interval",ylab="Average Steps Per Interval", main="Time Series Plot Of The Average Steps Per Interval")
 ```
 
 #### 2) The interval 835 scored the highest average of number of steps: 206.17.
@@ -113,7 +113,7 @@ activity_new_perInterval <- ddply(activity_new,.(interval),summarise,steps=round
 #### 4) After considering average of steps for the missing values the mean and median is sliglty different. In the first analyis the mean and median was nearly equal, however in this part they are more distant which also indicate a right skewed pattern (given the mean is higher than the median).
 
 ```{r}
-hist(activity_new_perDay$steps, breaks=15)
+hist(activity_new_perDay$steps, breaks=15, , xlab="Number of Steps Per Day (Average)",ylab="Frequency", main="Histogram")
 
 mean(activity_new_perDay$steps)
 
